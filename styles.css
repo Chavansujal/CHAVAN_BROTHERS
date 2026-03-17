@@ -571,7 +571,7 @@ p {
 .benefit-card {
   border-radius: 24px;
   padding: 1.35rem;
-  min-height: 140px;
+  min-height: 220px;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease;
@@ -611,48 +611,82 @@ p {
   z-index: 1;
   font-size: 1.05rem;
   color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(2, 8, 20, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.category-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+  transform: scale(1.02);
+}
+
+.category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 8, 18, 0.12), rgba(4, 8, 18, 0.78));
+  z-index: 0;
+}
+
+.benefit-card {
+  min-height: 220px;
+  display: flex;
+  align-items: end;
+}
+
+.benefit-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 18px;
+  background: rgba(2, 8, 20, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.benefit-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+  transform: scale(1.02);
+}
+
+.benefit-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 8, 18, 0.12), rgba(4, 8, 18, 0.82));
+  z-index: 0;
 }
 
 .glass-photo {
   border-radius: 34px;
   padding: 1.2rem;
-}
-
-.mock-dashboard {
+  overflow: hidden;
   min-height: 420px;
+}
+
+.demo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 26px;
-  background: linear-gradient(135deg, rgba(7, 18, 41, 0.92), rgba(15, 30, 67, 0.65));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  display: grid;
-  grid-template-columns: 86px 1fr;
-  padding: 1rem;
-  gap: 1rem;
-}
-
-.mock-sidebar,
-.mock-row,
-.mock-cards span {
-  background: linear-gradient(180deg, rgba(123, 225, 255, 0.2), rgba(123, 225, 255, 0.04));
-  border-radius: 16px;
-}
-
-.mock-content {
-  display: grid;
-  gap: 0.9rem;
-}
-
-.mock-row {
-  min-height: 76px;
-}
-
-.mock-row.large {
-  min-height: 150px;
-}
-
-.mock-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.9rem;
 }
 
 .stats-row {
@@ -817,36 +851,8 @@ p {
   border-radius: 22px;
   margin-bottom: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background-size: cover;
-  background-position: center;
-}
-
-.portfolio-screen.cafe {
-  background:
-    linear-gradient(180deg, rgba(3, 10, 26, 0.2), rgba(3, 10, 26, 0.6)),
-    radial-gradient(circle at top, rgba(255, 196, 112, 0.35), transparent 28%),
-    linear-gradient(135deg, #22130d, #4f2d1a 45%, #0d172b);
-}
-
-.portfolio-screen.hotel {
-  background:
-    linear-gradient(180deg, rgba(3, 10, 26, 0.1), rgba(3, 10, 26, 0.55)),
-    radial-gradient(circle at top, rgba(111, 229, 255, 0.26), transparent 24%),
-    linear-gradient(135deg, #0f2238, #183f6a 48%, #02050f);
-}
-
-.portfolio-screen.shop {
-  background:
-    linear-gradient(180deg, rgba(3, 10, 26, 0.2), rgba(3, 10, 26, 0.55)),
-    radial-gradient(circle at top, rgba(121, 168, 255, 0.3), transparent 25%),
-    linear-gradient(135deg, #151c33, #2d3564 46%, #050812);
-}
-
-.portfolio-screen.salon {
-  background:
-    linear-gradient(180deg, rgba(3, 10, 26, 0.2), rgba(3, 10, 26, 0.55)),
-    radial-gradient(circle at top, rgba(255, 142, 214, 0.22), transparent 28%),
-    linear-gradient(135deg, #241424, #592b5b 45%, #09111c);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(3, 10, 26, 0.1), rgba(3, 10, 26, 0.4));
 }
 
 .portfolio-copy p {
@@ -890,7 +896,7 @@ p {
   height: 58px;
   border-radius: 50%;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, rgba(123, 225, 255, 0.8), rgba(61, 100, 255, 0.3));
+  object-fit: cover;
   border: 1px solid rgba(255, 255, 255, 0.22);
 }
 

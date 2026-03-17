@@ -117,15 +117,34 @@ contactForm?.addEventListener("submit", event => {
   const button = contactForm.querySelector("button[type='submit']");
   if (!button) return;
 
+  const formData = new FormData(contactForm);
+  const name = String(formData.get("name") || "").trim();
+  const businessType = String(formData.get("business-type") || "").trim();
+  const phone = String(formData.get("phone") || "").trim();
+  const email = String(formData.get("email") || "").trim();
+  const packageName = String(formData.get("package") || "").trim();
+  const requirements = String(formData.get("requirements") || "").trim();
+  const whatsappNumber = "917385861327";
+  const message = [
+    "Hello Chavan Brothers Studio, I want a free consultation.",
+    "",
+    `Name: ${name || "Not provided"}`,
+    `Business Type: ${businessType || "Not provided"}`,
+    `Phone: ${phone || "Not provided"}`,
+    `Email: ${email || "Not provided"}`,
+    `Package: ${packageName || "Not provided"}`,
+    `Requirements: ${requirements || "Not provided"}`
+  ].join("\n");
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   const originalText = button.textContent;
-  button.textContent = "Request Received";
+  button.textContent = "Opening WhatsApp...";
   button.setAttribute("disabled", "true");
+  window.open(whatsappUrl, "_blank", "noopener");
 
   window.setTimeout(() => {
     button.textContent = originalText;
     button.removeAttribute("disabled");
-    contactForm.reset();
-  }, 1800);
+  }, 1600);
 });
 
 document.addEventListener("mousemove", event => {
