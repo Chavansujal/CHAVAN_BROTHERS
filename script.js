@@ -11,10 +11,34 @@ const sliderNext = document.querySelector(".slider-arrow.next");
 const sliderPrev = document.querySelector(".slider-arrow.prev");
 const contactForm = document.querySelector(".contact-form");
 const scene = document.querySelector(".orbital-scene");
+const backgroundMusic = document.querySelector("#background-music");
 let activeSlide = 0;
+
+const startBackgroundMusic = () => {
+  if (!backgroundMusic) return;
+
+  backgroundMusic.volume = 0.35;
+  backgroundMusic.play().catch(() => {});
+};
 
 window.addEventListener("load", () => {
   window.setTimeout(() => loader?.classList.add("hidden"), 700);
+  startBackgroundMusic();
+});
+
+["click", "keydown", "touchstart"].forEach(eventName => {
+  document.addEventListener(
+    eventName,
+    () => {
+      if (backgroundMusic?.paused) startBackgroundMusic();
+    },
+    { once: true, passive: true }
+  );
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (!backgroundMusic || document.hidden || !backgroundMusic.paused) return;
+  startBackgroundMusic();
 });
 
 const revealObserver = new IntersectionObserver(
